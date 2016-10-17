@@ -1,0 +1,27 @@
+h1 Listing runs
+
+table
+  thead
+    tr
+      th Title
+      th Description
+      th User
+      th Event
+      th
+      th
+      th
+
+  tbody
+    - @runs.each do |run|
+      tr
+        td = run.title
+        td = run.description
+        td = run.user_id
+        td = run.event_id
+        td = link_to 'Show', run
+        td = link_to 'Edit', edit_run_path(run)
+        td = link_to 'Destroy', run, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Run', new_run_path

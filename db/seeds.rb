@@ -23,3 +23,7 @@ Character.find_or_create_by(name: 'Zenyatta')
 Character.find_or_create_by(name: 'Ana')
 
 p 'Characters created'
+
+# Events
+
+Event.find_or_create_by(title: "Junkenstein's Revenge")

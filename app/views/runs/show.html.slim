@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @run.title
+p
+  strong Description:
+  = @run.description
+p
+  strong User:
+  = @run.user_id
+p
+  strong Event:
+  = @run.event_id
+
+= link_to 'Edit', edit_run_path(@run)
+'|
+= link_to 'Back', runs_path
