@@ -1,7 +1,22 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Heroes
+Hero.create(name: 'Бастион', age: 30, real_name: 'SST Laboratories Siege Automation E54')
+Hero.create(name: 'D.Va', age: 31, real_name: 'Хана Сонг')
+Hero.create(name: 'Гэндзи', age: 35, real_name: 'Гэндзи Шимада')
+Hero.create(name: 'Хандзо', age: 38, real_name: 'Хандзо Шимада')
+Hero.create(name: 'Крысавчик', age: 25, real_name: 'Джеймисон Фоукс')
+Hero.create(name: 'Лусио', age: 26, real_name: 'Лусио Корреиа Дос Сантос')
+Hero.create(name: 'Маккри', age: 0, real_name: 'Джесси Маккри')
+Hero.create(name: 'Мэй', age: 31, real_name: 'Мэй Лин Чжоу')
+Hero.create(name: 'Ангел', age: 34, real_name: 'Ангелина Зиглер')
+Hero.create(name: 'Фарра', age: 32, real_name: 'Фарра Амари')
+Hero.create(name: 'Жнец', age: 0, real_name: 'Габриэль Райс')
+Hero.create(name: 'Рэйнхард', age: 61, real_name: 'Рэйнхард Вильгельм')
+Hero.create(name: 'Турбосвин', age: 48, real_name: 'Мако Рутледж')
+Hero.create(name: 'Солдат 76', age: 0, real_name: 'Джон Моррисон')
+Hero.create(name: 'Симметра', age: 28, real_name: 'Сатья Вашвани')
+Hero.create(name: 'Торбьорн', age: 57, real_name: 'Торбьорн Линдхольм')
+Hero.create(name: 'Трейсер', age: 26, real_name: 'Лена Окстон')
+Hero.create(name: 'Вдова', age: 33, real_name: 'Амели Лакруа')
+Hero.create(name: 'Уинстон', age: 29, real_name: 'Уинстон')
+Hero.create(name: 'Заря', age: 28, real_name: 'Александра Зарянова')
+Hero.create(name: 'Дзеньятта', age: 20, real_name: 'Текхата Дзеньятта')

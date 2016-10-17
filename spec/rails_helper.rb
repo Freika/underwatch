@@ -5,6 +5,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'ffaker'
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -15,6 +16,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   Capybara.default_driver = :poltergeist
   Capybara.javascript_driver = :poltergeist
+  config.include FactoryGirl::Syntax::Methods
 
   # Database Cleaner
   config.use_transactional_fixtures = false
@@ -37,5 +39,12 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+  end
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
   end
 end
