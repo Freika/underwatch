@@ -1,3 +1,7 @@
 class Event < ApplicationRecord
-  enum difficulty: { easy: 0, medium: 1, hard: 2 }
+  DIFFICULTIES = %w(Easy Medium Hard).freeze
+  enum difficulty: DIFFICULTIES
+
+  validates :title, presence: true
+  validates :difficulty, presence: true
 end

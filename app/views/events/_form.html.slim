@@ -8,11 +8,12 @@
 
   .field
     = f.label :title
-    = f.text_field :title
+    = f.text_field :title, class: 'form-control'
   .field
     = f.label :description
-    = f.text_area :description
+    = f.text_area :description, class: 'form-control'
   .field
     = f.label :difficulty
-    = f.number_field :difficulty
-  .actions = f.submit
+    = f.select :difficulty, Event::DIFFICULTIES, {}, class: 'form-control'
+  br
+  = f.submit 'Save', class: 'btn btn default'

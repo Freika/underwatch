@@ -18,12 +18,15 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'ffaker'
 end
 
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'poltergeist'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers'
 end
 
 group :development do
