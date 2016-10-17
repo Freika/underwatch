@@ -1,7 +1,7 @@
 # Characters
 Character.find_or_create_by(name: 'Bastion')
 Character.find_or_create_by(name: 'D.Va')
-Character.find_or_create_by(name: 'Gendji')
+Character.find_or_create_by(name: 'Genji')
 Character.find_or_create_by(name: 'Hanzo')
 Character.find_or_create_by(name: 'Junkrat')
 Character.find_or_create_by(name: 'Lucio')

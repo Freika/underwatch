@@ -6,17 +6,20 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'ffaker'
+require 'devise'
 
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Warden::Test::Helpers
+  config.include FactoryGirl::Syntax::Methods
+
   Capybara.default_driver = :poltergeist
   Capybara.javascript_driver = :poltergeist
-  config.include FactoryGirl::Syntax::Methods
 
   # Database Cleaner
   config.use_transactional_fixtures = false

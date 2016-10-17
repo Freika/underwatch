@@ -14,6 +14,9 @@ gem 'slim-rails'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 
+gem 'devise'
+gem 'pundit'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
