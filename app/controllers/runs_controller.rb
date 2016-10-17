@@ -1,5 +1,8 @@
 class RunsController < ApplicationController
   before_action :set_run, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [
+    :new, :edit, :create, :update, :destroy
+  ]
 
   def index
     @runs = Run.all
@@ -10,15 +13,15 @@ class RunsController < ApplicationController
 
   def new
     @run = Run.new
-    @events = []
+    @events = Event.all.map { |e| [e.title, e.id] }
   end
 
   def edit
-    @events = []
+    @events = Event.all.map { |e| [e.title, e.id] }
   end
 
   def create
-    @run = Run.new(run_params)
+    @run = current_user.runs.build(run_params)
 
     if @run.save
       redirect_to @run, notice: 'Run was successfully created.'
@@ -46,6 +49,6 @@ class RunsController < ApplicationController
     end
 
     def run_params
-      params.require(:run).permit(:title, :description, :user_id, :event_id)
+      params.require(:run).permit(:title, :description, :event_id)
     end
 end

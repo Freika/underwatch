@@ -13,6 +13,7 @@
     = f.label :description
     = f.text_area :description, class: 'form-control'
   .field
-    = f.label :event
+    = f.label :event_id, 'Event'
     = f.select :event_id, @events
-  .actions = f.submit
+  br
+  .actions = f.submit 'Save', class: 'btn btn-default'

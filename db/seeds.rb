@@ -26,4 +26,9 @@ p 'Characters created'
 
 # Events
 
-Event.find_or_create_by(title: "Junkenstein's Revenge")
+Event.find_or_create_by(
+  title: "Junkenstein's Revenge",
+  description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam minus quos recusandae voluptate modi ipsa perferendis cumque aliquam repellat maiores, nobis repellendus, illum laborum nostrum aspernatur eos, sint quo blanditiis!'
+)
+
+p 'Events created'

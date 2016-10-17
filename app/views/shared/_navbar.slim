@@ -14,7 +14,7 @@ nav.navbar.navbar-default
       = link_to 'Underwatch', root_path, class: 'navbar-brand'
     .collapse.navbar-collapse#navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li = link_to 'New Event', new_event_path
+        li = link_to 'New Run', new_run_path
         - if signed_in?
           li.dropdown
             a.dropdown-toggle href='#' data-toggle='dropdown'
