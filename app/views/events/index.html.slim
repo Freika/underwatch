@@ -1,0 +1,15 @@
+h1 Listing events
+
+= link_to 'New Event', new_event_path, class: 'btn btn-default'
+
+table.table
+  thead
+    tr
+      th Title
+      th Difficulty
+
+  tbody
+    - @events.each do |event|
+      tr
+        td = link_to event.title, event
+        td = event.difficulty
