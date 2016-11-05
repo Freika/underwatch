@@ -9,6 +9,18 @@
   </div>
 
   <div class="field">
+    <%= f.label :battletag %> <i>(Format: Battletag#0000, case sensitive)</i>
+    <br>
+    <%= f.text_field :battletag %>
+  </div>
+
+  <div class="field">
+    <%= f.label :region %>
+    <br>
+    <%= f.select :region, User.regions.map { |k, _v| [k.upcase, k] } %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
