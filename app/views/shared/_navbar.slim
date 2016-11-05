@@ -2,6 +2,9 @@
   .ui.container
     = link_to root_path, class: 'header item' do
       img.logo src="http://semantic-ui.com/examples/assets/images/logo.png"
+
+    = link_to 'New event', new_event_path, class: 'item'
+    = link_to 'Events', events_path, class: 'item'
     .ui.simple.dropdown.item.right
       - if signed_in?
         i.dashboard.icon

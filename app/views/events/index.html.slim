@@ -1,0 +1,9 @@
+h1 Listing events
+
+.ui.divided.items
+  - @events.each do |event|
+    .item
+      .ui.tiny.image
+        = image_tag 'http://semantic-ui.com/images/wireframe/image.png'
+      .middle.aligned.content
+        = link_to event.title, event

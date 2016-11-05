@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :battletag, :region, presence: true
   validates :battletag, uniqueness: true
 
+  has_many :events
+
   def battletag_slugified
     battletag.gsub('#', '-')
   end
