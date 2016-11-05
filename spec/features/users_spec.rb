@@ -35,5 +35,20 @@ RSpec.feature 'Users' do
       expect(page).to have_content 'Your account has been updated successfully.'
       expect(user.reload.battletag).to eq(battletag)
     end
+
+    it 'sets region' do
+      login_as(user, scope: :user)
+      region = 'eu'
+
+      visit edit_user_registration_path
+
+      select region.upcase, from: 'Region'
+      fill_in 'Current password', with: user.password
+
+      click_on 'Update'
+
+      expect(page).to have_content 'Your account has been updated successfully.'
+      expect(user.reload.region).to eq(region)
+    end
   end
 end
