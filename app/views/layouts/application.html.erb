@@ -9,6 +9,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+    <div class="ui main text container">
+      <%= semantic_flash %>
+      <%= yield %>
+    </div>
   </body>
 </html>

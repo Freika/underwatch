@@ -1,0 +1,15 @@
+.ui.inverted.menu
+  .ui.container
+    = link_to root_path, class: 'header item' do
+      img.logo src="http://semantic-ui.com/examples/assets/images/logo.png"
+    .ui.simple.dropdown.item.right
+      - if signed_in?
+        i.dashboard.icon
+        .menu
+          = link_to 'Settings', edit_user_registration_path, class: 'item'
+          = link_to 'Logout', destroy_user_session_path, data: { method: :delete }, class: 'item'
+      - else
+        i.lock.icon
+        .menu
+          = link_to 'Login', new_user_session_path, class: 'item'
+          = link_to 'Register', new_user_registration_path, class: 'item'
