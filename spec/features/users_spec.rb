@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Users' do
-
   context 'registration' do
     let(:user) { attributes_for(:user) }
 

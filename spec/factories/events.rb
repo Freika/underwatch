@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :event do
-    title "MyString"
-    description "MyText"
-    mode 1
-    user_id 1
+    title { FFaker::Name.name }
+    description { FFaker::Lorem.paragraph }
+    mode { Event.modes.keys.sample }
+    user
   end
 end

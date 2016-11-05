@@ -1,18 +1,14 @@
-p#notice = notice
-
-p
-  strong Title:
-  = @event.title
-p
-  strong Description:
-  = @event.description
-p
-  strong Mode:
-  = @event.mode
-p
-  strong User:
-  = @event.user_id
-
-= link_to 'Edit', edit_event_path(@event)
-'|
-= link_to 'Back', events_path
+.item
+  .middle.aligned.content
+    h2.header = @event.title
+    .description
+      p = @event.description
+    .extra
+      i.green.check.icon
+      | 6/6 players
+      - if policy(@event).edit?
+        .ui.right.floated.button
+          = link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' }
+      - if policy(@event).edit?
+        .ui.right.floated.button
+          = link_to 'Edit', edit_event_path(@event)

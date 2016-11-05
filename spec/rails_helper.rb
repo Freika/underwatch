@@ -20,14 +20,7 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
 
   config.before(:all) { FactoryGirl.reload }
-
-  config.before(:suite) { DatabaseCleaner.clean_with :truncation }
-  config.before(:each) { DatabaseCleaner.strategy = :transaction }
-  config.before(:each) { DatabaseCleaner.start }
-  config.after(:each) { DatabaseCleaner.clean }
-  config.before(:each, js: true) do
-    DatabaseCleaner.strategy = :truncation
-  end
+  config.before(:each) { Capybara.reset_sessions! }
 end
 
 Shoulda::Matchers.configure do |config|
