@@ -5,4 +5,8 @@ class User < ApplicationRecord
   friendly_id :battletag, use: :slugged
 
   enum region: [:eu, :us]
+
+  def battletag_slugified
+    battletag.gsub('#', '-')
+  end
 end
