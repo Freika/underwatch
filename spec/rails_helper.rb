@@ -17,6 +17,7 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Rails.application.routes.url_helpers
+  config.include Warden::Test::Helpers
 
   config.before(:all) { FactoryGirl.reload }
 
