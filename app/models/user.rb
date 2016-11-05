@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   enum region: [:eu, :us]
 
-  validates :battletag, :region, presence: true
+  validates :battletag, :region, :timezone, presence: true
   validates :battletag, uniqueness: true
 
   has_many :events
