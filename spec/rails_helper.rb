@@ -12,8 +12,21 @@ RSpec.configure do |config|
   config.raise_errors_for_deprecations!
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
-  config.include Devise::TestHelpers, type: :controller
-  config.include Warden::Test::Helpers
+
+  config.include FactoryGirl::Syntax::Methods
+  config.include Capybara::DSL
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Rails.application.routes.url_helpers
+
+  config.before(:all) { FactoryGirl.reload }
+
+  config.before(:suite) { DatabaseCleaner.clean_with :truncation }
+  config.before(:each) { DatabaseCleaner.strategy = :transaction }
+  config.before(:each) { DatabaseCleaner.start }
+  config.after(:each) { DatabaseCleaner.clean }
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
 end
 
 Shoulda::Matchers.configure do |config|
@@ -22,3 +35,6 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+Capybara.javascript_driver = :webkit
+

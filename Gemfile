@@ -17,7 +17,7 @@ gem 'figaro'
 gem 'devise'
 
 group :test do
-  gem 'capybara', '~> 2.4.0'
+  gem 'capybara', '~> 2.8'
   gem 'capybara-webkit'
   gem 'database_cleaner', '~> 1.3'
   gem 'shoulda-matchers', '~> 3.1'
