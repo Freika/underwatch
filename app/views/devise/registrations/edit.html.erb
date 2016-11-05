@@ -20,6 +20,12 @@
     <%= f.select :region, User.regions.map { |k, _v| [k.upcase, k] }, include_blank: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :timezone %>
+    <br>
+    <%= f.time_zone_select :timezone %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

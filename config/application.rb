@@ -15,6 +15,9 @@ Bundler.require(*Rails.groups)
 
 module Underwatch
   class Application < Rails::Application
+    config.time_zone = 'Moscow'
+    config.active_record.default_timezone = :local
+
     config.generators do |g|
       g.assets false
       g.helper false

@@ -51,5 +51,19 @@ RSpec.feature 'Users' do
       expect(page).to have_content 'Your account has been updated successfully.'
       expect(user.reload.region).to eq(region)
     end
+
+    it 'sets timezone' do
+      login_as(user, scope: :user)
+
+      visit edit_user_registration_path
+
+      select 'Alaska', from: 'Timezone'
+      fill_in 'Current password', with: user.password
+
+      click_on 'Update'
+
+      expect(page).to have_content 'Your account has been updated successfully.'
+      expect(user.reload.timezone).to eq('Alaska')
+    end
   end
 end
