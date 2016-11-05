@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/show'
+  get 'users/:battletag', to: 'users#show'
 
   root 'pages#home'
 
