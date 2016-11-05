@@ -15,6 +15,7 @@ gem 'slim-rails'
 
 gem 'figaro'
 gem 'devise'
+gem 'friendly_id', '~> 5.1.0'
 
 group :test do
   gem 'capybara', '~> 2.8'
