@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161105161341) do
+ActiveRecord::Schema.define(version: 20161105165638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,11 @@ ActiveRecord::Schema.define(version: 20161105161341) do
     t.string   "title"
     t.text     "description"
     t.integer  "mode"
-    t.integer  "user_id"
+    t.integer  "author_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["author_id"], name: "index_events_on_author_id", using: :btree
     t.index ["mode"], name: "index_events_on_mode", using: :btree
-    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 20161105161341) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
+
+  create_table "participations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.boolean  "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_participations_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_participations_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

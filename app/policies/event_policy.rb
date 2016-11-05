@@ -12,6 +12,6 @@ class EventPolicy < ApplicationPolicy
   end
 
   def author?
-    record.user_id == user.id
+    record.author_id == user.id
   end
 end

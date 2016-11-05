@@ -31,7 +31,7 @@ RSpec.feature 'Events' do
   end
 
   context 'editing' do
-    let(:event) { create(:event, user: user) }
+    let(:event) { create(:event, author: user) }
 
     it 'can be done by author' do
       login_as(user, scope: :user)
@@ -56,7 +56,7 @@ RSpec.feature 'Events' do
   end
 
   context 'deleting' do
-    let(:event) { create(:event, user: user) }
+    let(:event) { create(:event, author: user) }
 
     it 'can be done by author' do
       login_as(user, scope: :user)

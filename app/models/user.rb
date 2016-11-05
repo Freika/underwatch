@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :battletag, uniqueness: true
 
   has_many :events
+  has_many :participations
+  has_many :events, through: :participations, as: :games
 
   def battletag_slugified
     battletag.gsub('#', '-')
