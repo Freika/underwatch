@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'users/:battletag', to: 'users#show'
+  devise_for :users
 
   root 'pages#home'
 
-  devise_for :users
+  get 'profile/:region/:battletag', to: 'users#show'
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
   def show
-    @user = User.friendly.find(params[:battletag])
+    @user = User.find_by(region: params[:region], slug: params[:battletag])
   end
 end

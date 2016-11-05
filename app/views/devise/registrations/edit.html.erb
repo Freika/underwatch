@@ -14,6 +14,12 @@
     <%= f.text_field :battletag %>
   </div>
 
+  <div class="field">
+    <%= f.label :region %>
+    <br>
+    <%= f.select :region, User.regions.map { |key, value| [key.humanize, key] }, include_blank: true %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
