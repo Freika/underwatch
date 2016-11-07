@@ -7,6 +7,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @participation = @event.participations.find_by(user_id: current_user.id)
+    @requests = @event.participations
   end
 
   def new
@@ -48,7 +50,7 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.find(params[:id])
+    @event = Event.includes(:participations, :users).find(params[:id])
   end
 
   def event_params

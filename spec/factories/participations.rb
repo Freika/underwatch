@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :participation do
-    user_id 1
-    event_id 1
+    user
+    event
     approved false
   end
 end

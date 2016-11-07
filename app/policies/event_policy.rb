@@ -11,6 +11,10 @@ class EventPolicy < ApplicationPolicy
     author?
   end
 
+  def participate?
+    !author?
+  end
+
   def author?
     record.author_id == user.id
   end

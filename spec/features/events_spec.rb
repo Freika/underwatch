@@ -76,4 +76,61 @@ RSpec.feature 'Events' do
       expect(page).to_not have_link 'Destroy'
     end
   end
+
+  context 'participating' do
+    let!(:event) { create(:event, author: user) }
+
+    context 'as guest' do
+      before(:each) { login_as(user2, scope: :user) }
+
+      it 'can be successfully requested' do
+        visit event_path(event)
+
+        click_on 'Participate'
+
+        expect(page).to have_content 'You requested participation'
+      end
+
+      it 'can be canceled' do
+        visit event_path(event)
+        click_on 'Participate'
+        click_on 'Cancel participation'
+
+        expect(page).to have_content 'You canceled request'
+      end
+    end
+
+    context 'as author' do
+      let!(:participation) { create(:participation, event: event, user: user2) }
+      before(:each) { login_as(user, scope: :user) }
+
+      it 'lists requests on event page' do
+        visit event_path(event)
+
+        within '#requests' do
+          expect(page).to have_link user2.battletag
+        end
+      end
+
+      it 'can approve request' do
+        visit event_path(event)
+
+        within "#request-#{participation.id}" do
+          click_on 'Approve'
+        end
+
+        expect(page).to have_content 'Request approved.'
+      end
+
+      it 'can decline request' do
+        visit event_path(event)
+
+        within "#request-#{participation.id}" do
+          click_on 'Cancel'
+        end
+
+        expect(page).to have_content 'You canceled request'
+      end
+    end
+  end
 end

@@ -1,14 +1,28 @@
 .item
   .middle.aligned.content
     h2.header = @event.title
+    i.green.check.icon
+    = "#{@event.participations.approved.size}/6 players"
     .description
       p = @event.description
     .extra
-      i.green.check.icon
-      | 6/6 players
+      .ui.grid
+        .eight.wide.column
+          #requests
+            = render 'requests', event: @event, requests: @requests
       - if policy(@event).edit?
         .ui.right.floated.button
           = link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' }
       - if policy(@event).edit?
         .ui.right.floated.button
           = link_to 'Edit', edit_event_path(@event)
+
+    - if policy(@event).participate?
+      - if @participation
+        p You were signed to participation but not yet approved by organizer.
+        p
+          = link_to 'Cancel participation', @participation, method: :delete,
+            class: 'ui negative basic button', data: { confirm: 'Are you sure?' }
+      - else
+        = link_to 'Participate', participations_path(event_id: @event.id),
+          method: :post, class: 'ui primary button'
