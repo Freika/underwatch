@@ -1,9 +1,10 @@
 .item
   .middle.aligned.content
     h2.header = @event.title
-    span#appointed_at data-tooltip='24H format, based on your current timezone. You can change it in profile settings.'
-      i.wait.icon
-      => human_time(@event.appointed_at)
+    - if @event.appointed_at
+      span#appointed_at data-tooltip='24H format, based on your current timezone. You can change it in profile settings.'
+        i.wait.icon
+        => human_time(@event.appointed_at)
     i.green.check.icon
     = "#{@event.participations.approved.size}/6 players"
     .description
