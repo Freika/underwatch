@@ -5,7 +5,7 @@
       span#appointed_at data-tooltip='24H format, based on your current timezone. You can change it in profile settings.'
         i.wait.icon
         => human_time(@event.appointed_at)
-    i.green.check.icon
+    i.icon class=(players_icon(@event))
     = "#{@event.participations.approved.size}/6 players"
     .description
       p = @event.description

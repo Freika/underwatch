@@ -3,9 +3,8 @@ table.ui.table.celled
   - requests.each do |request|
     tr id=("request-#{request.id}")
       td
-        => link_to profile_path(request.user.region, request.user.slug),
-          class: request_status_color(request.approved) do
-            = request.user.battletag
+        => link_to profile_path(request.user.region, request.user.slug) do
+          = request.user.battletag
         - if policy(@event).author?
           - unless request.approved?
             => link_to approve_participation_path(id: request, event_id: event.id),
