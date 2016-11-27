@@ -30,7 +30,8 @@ class ParticipationsController < ApplicationController
     authorize participation
 
     participation.update(approved: true)
-    EventMailer.request_approved(event, participation.user)
+    EventMailer.request_approved(event, participation.user).deliver_later
+
     redirect_to event, notice: 'Request approved.'
   end
 end
