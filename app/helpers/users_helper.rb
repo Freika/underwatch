@@ -6,4 +6,8 @@ module UsersHelper
   def link_to_masteroverwatch(user)
     link_to user.battletag, "http://masteroverwatch.com/profile/pc/#{user.region}/#{user.battletag_slugified}"
   end
+
+  def request_status_color(status)
+    status ? 'blue' : 'grey'
+  end
 end

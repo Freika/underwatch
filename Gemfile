@@ -18,6 +18,9 @@ gem 'devise'
 gem 'friendly_id', '~> 5.1.0'
 gem 'pundit'
 
+gem 'sidekiq'
+gem 'whenever'
+
 group :test do
   gem 'capybara', '~> 2.8'
   gem 'capybara-webkit'
@@ -39,4 +42,6 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'switch_user'
+  gem 'letter_opener'
 end

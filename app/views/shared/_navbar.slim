@@ -5,8 +5,10 @@
 
     = link_to 'New event', new_event_path, class: 'item'
     = link_to 'Events', events_path, class: 'item'
+
     .ui.simple.dropdown.item.right
       - if signed_in?
+        .item => current_user.battletag
         i.dashboard.icon
         .menu
           = link_to 'Settings', edit_user_registration_path, class: 'item'

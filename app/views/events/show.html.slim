@@ -1,14 +1,32 @@
 .item
   .middle.aligned.content
     h2.header = @event.title
+    - if @event.appointed_at
+      span#appointed_at data-tooltip='24H format, based on your current timezone. You can change it in profile settings.'
+        i.wait.icon
+        => human_time(@event.appointed_at)
+    i.icon class=(players_icon(@event))
+    = "#{@event.participations.approved.size}/6 players"
     .description
       p = @event.description
     .extra
-      i.green.check.icon
-      | 6/6 players
+      .ui.grid
+        .eight.wide.column
+          #requests
+            = render 'requests', event: @event, requests: @requests
       - if policy(@event).edit?
         .ui.right.floated.button
           = link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' }
       - if policy(@event).edit?
         .ui.right.floated.button
           = link_to 'Edit', edit_event_path(@event)
+
+    - if policy(@event).participate?
+      - if @participation
+        p You were signed to participation but not yet approved by organizer.
+        p
+          = link_to 'Cancel participation', @participation, method: :delete,
+            class: 'ui negative basic button', data: { confirm: 'Are you sure?' }
+      - else
+        = link_to 'Participate', participations_path(event_id: @event.id),
+          method: :post, class: 'ui primary button'
